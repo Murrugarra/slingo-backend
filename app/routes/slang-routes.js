@@ -11,6 +11,7 @@ exports.configureRoutes = (router) => {
         .post((req, res) => {
             var slang = new Slang()
             slang.slang = req.body.slang
+            slang.country = req.body.country
             slang.synonyms = req.body.synonyms
             slang.meaning = req.body.meaning
 
@@ -22,7 +23,8 @@ exports.configureRoutes = (router) => {
             })
         })
         .get((req, res) => {
-            Slang.find((err, slangs) => {
+            let country = req.query.country
+            Slang.find({country}, (err, slangs) => {
                 if (err)
                     res.send(err)
 
