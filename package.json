@@ -1,0 +1,22 @@
+{
+  "name": "slingo-backend",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Murrugarra/slingo-backend.git"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Erikson Murrugarra <digitalpark.io>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~4.16.1",
+    "morgan": "~1.9.0",
+    "mongoose": "~4.11.14",
+    "body-parser": "~1.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
