@@ -22,14 +22,10 @@ db.once('open', function() {
   console.log("DB connection alive");
 });
 
-
-
 var router = express.Router();
-
-require('./app/routes/slang-routes').configureRoutes(router)
-
-
-
+require('./app/routes').config(router)
 app.use('/api', router);
+
+
 app.listen(port);
 console.log('Slingo API server started on: ' + port);
