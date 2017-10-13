@@ -1,31 +1,29 @@
-var express = require('express'),
-bodyParser = require('body-parser'),
-cors = require('cors'),
-app = express(),
-port = process.env.PORT || 3000;
+let express = require('express')
+let mongoose = require('mongoose')
+let bodyParser = require('body-parser')
+let cors = require('cors')
+let app = express()
+let port = process.env.PORT || 3000
 
+// express config
 app.use(cors());
-
-// configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// DATABASE SETUP
-var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost:32768/SlingoDB'); // connect to our database
-
-// Handle the connection event
-var db = mongoose.connection;
+// database connection
+mongoose.connect('mongodb://localhost:32768/SlingoDB', {useMongoClient: true})
+let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-
 db.once('open', function() {
-  console.log("DB connection alive");
-});
+  console.log("DB connection alive")
+})
 
+// rounting config
 var router = express.Router();
 require('./app/routes').config(router)
 app.use('/api', router);
 
 
+// app kickoff
 app.listen(port);
 console.log('Slingo API server started on: ' + port);
