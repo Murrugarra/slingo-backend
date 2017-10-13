@@ -5,7 +5,10 @@ var SlangSchema = new Schema({
     slang: String,
     meaning: String,
     country: String,
-    synonyms: [String],
+    synonyms: [{
+        slang_id: String,
+        slang: String
+    }],
     examples: [String]
 });
 

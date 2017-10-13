@@ -8,6 +8,7 @@ exports.createSlang = (req, res) => {
     slang.country = req.body.country
     slang.synonyms = req.body.synonyms
     slang.meaning = req.body.meaning
+    slang.examples = req.body.examples
 
     slang.save((err) => {
         if (err)
