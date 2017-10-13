@@ -23,8 +23,8 @@ exports.configureRoutes = (router) => {
             })
         })
         .get((req, res) => {
-            let country = req.query.country
-            Slang.find({country}, (err, slangs) => {
+            let country = req.query.country            
+            Slang.find({country}, {_id: 1, slang: 2, meaning: 3, synonyms: 4}, (err, slangs) => {
                 if (err)
                     res.send(err)
 
@@ -33,8 +33,8 @@ exports.configureRoutes = (router) => {
         })
     
     router.route('/slangs/:slang_id')
-        .get((req, res) => {
-            Slang.findById(req.params.slang_id, (err, slang) => {
+        .get((req, res) => {            
+            Slang.findById(req.params.slang_id, {_id: 1, slang: 2, meaning: 3, synonyms: 4, examples: 5}, (err, slang) => {
                 if (err)
                     res.send(err)
 
